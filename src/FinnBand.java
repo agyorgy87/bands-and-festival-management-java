@@ -1,18 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MexicanBand implements Band {
+public class FinnBand implements Band {
 
     private String name;
-    private List<String> albums;
-    private double totalIncome;
-    private boolean diedInGangWar;
 
-    public MexicanBand(String name, double totalIncome, boolean diedInGangWar) {
+    private List<String> albums;
+
+    private double totalIncome;
+
+    private double alcoholConsumedOnAccount;
+
+    public FinnBand(String name, double, double totalIncome, double alcoholConsumedOnAccount) {
         this.name = name;
         this.albums = new ArrayList<>();
         this.totalIncome = totalIncome;
-        this.diedInGangWar = diedInGangWar;
+        this.alcoholConsumedOnAccount = alcoholConsumedOnAccount;
     }
 
     public double getTotalIncome() {
@@ -23,12 +26,12 @@ public class MexicanBand implements Band {
         this.totalIncome = totalIncome;
     }
 
-    public boolean getDiedInGangWar() {
-        return diedInGangWar;
+    public double getAlcoholConsumedOnAccount() {
+        return alcoholConsumedOnAccount;
     }
 
-    public void setDiedInGangWar(boolean diedInGangWar) {
-        this.diedInGangWar = diedInGangWar;
+    public void setAlcoholConsumedOnAccount(double alcoholConsumedOnAccount) {
+        this.alcoholConsumedOnAccount = alcoholConsumedOnAccount;
     }
 
     public String getName() {
@@ -42,10 +45,4 @@ public class MexicanBand implements Band {
     public void albumRelease(String albumName) {
         albums.add(albumName);
     }
-
-    /*
-    static List<Band> parseAll(String fileName) {
-        //...
-    }
-    */
 }
