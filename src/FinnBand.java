@@ -45,4 +45,5 @@ public class FinnBand implements Band {
     public void albumRelease(String albumName) {
         albums.add(albumName);
     }
+
 }
