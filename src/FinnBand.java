@@ -11,11 +11,11 @@ public class FinnBand implements Band {
 
     private double alcoholConsumedOnAccount;
 
-    public FinnBand(String name, double, double totalIncome, double alcoholConsumedOnAccount) {
+    public FinnBand(String name) {
         this.name = name;
         this.albums = new ArrayList<>();
-        this.totalIncome = totalIncome;
-        this.alcoholConsumedOnAccount = alcoholConsumedOnAccount;
+        this.totalIncome = 0.0;
+        this.alcoholConsumedOnAccount = 0.0;
     }
 
     public double getTotalIncome() {

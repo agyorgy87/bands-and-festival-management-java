@@ -8,11 +8,11 @@ public class MexicanBand implements Band {
     private double totalIncome;
     private boolean diedInGangWar;
 
-    public MexicanBand(String name, double totalIncome, boolean diedInGangWar) {
+    public MexicanBand(String name) {//deleted
         this.name = name;
         this.albums = new ArrayList<>();
-        this.totalIncome = totalIncome;
-        this.diedInGangWar = diedInGangWar;
+        this.totalIncome = 0.0;
+        this.diedInGangWar = false;
     }
 
     public double getTotalIncome() {
@@ -43,9 +43,29 @@ public class MexicanBand implements Band {
         albums.add(albumName);
     }
 
-    /*
-    static List<Band> parseAll(String fileName) {
-        //...
+    public static List<Band> parseAll(String filename) {
+        List<Band> bands = new ArrayList<>();
+
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 4) {
+                    String name = parts[0];
+                    String album = parts[1];
+                    double totalIncome = Double.parseDouble(parts[2]);
+                    boolean diedInGangWar = Boolean.parseBoolean(parts[3]);
+
+                    MexicanBand band = new MexicanBand(name);
+                    band.albumRelease(album);
+                    band.setTotalIncome(totalIncome);
+                    band.setDiedInGangWar(diedInGangWar);
+                    bands.add(band);
+                }
+            }
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        return bands;
     }
-    */
 }

@@ -1,0 +1,5 @@
+Santa Fe Klan;Viva Guanajuato;5000;false
+Cartel De Santa;Bendiga;10000;false
+Tornillo;Cumbia Pandillera;3000;false
+Peso Pluma;La Bebe;1000000;false
+Lefty Papá;Delincuencia;99999999;true
