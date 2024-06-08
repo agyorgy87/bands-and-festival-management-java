@@ -7,12 +7,22 @@ public class MexicanBand implements Band {
     private List<String> albums;
     private double totalIncome;
     private boolean diedInGangWar;
+    private double ticketPrice;
 
     public MexicanBand(String name) {//deleted
         this.name = name;
         this.albums = new ArrayList<>();
         this.totalIncome = 0.0;
         this.diedInGangWar = false;
+        this.ticketPrice = 100;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getAlbums() {
+        return albums;
     }
 
     public double getTotalIncome() {
@@ -31,13 +41,7 @@ public class MexicanBand implements Band {
         this.diedInGangWar = diedInGangWar;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getAlbums() {
-        return albums;
-    }
+    public double getTicketPrice() { return ticketPrice; }
 
     public void albumRelease(String albumName) {
         albums.add(albumName);
