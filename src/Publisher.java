@@ -30,17 +30,38 @@ public class Publisher {
 
     public boolean albumSales(double amount, String bandName) {
         for(Band band : bands) {
-            if (band instanceof MexicanBand && ((MexicanBand) band).getName().equals(bandName)) {
-                ((MexicanBand) band).setTotalIncome(((MexicanBand) band).getTotalIncome() + amount);
-                return true;
-            } else if (band instanceof FinnBand && ((FinnBand) band).getName().equals(bandName)) {
-                ((FinnBand) band).setTotalIncome(((FinnBand) band).getTotalIncome() + amount);
+            if(band.getName().equals(bandName)) {
+                double updatedIncome = band.getTotalIncome() + amount;
+                band.setTotalIncome(updatedIncome);
                 return true;
             }
         }
+        return false;
     }
 
-    //totalIncome()
+    public double fullIncome() {
+        double total = 0.0;
+        for(Band band : bands) {
+            if( band instanceof FinnBand) {
+               total += band.getTotalIncome() + ((FinnBand) band).getAlcoholConsumedOnAccount();//ClassCastException
+            }else{
+                total += band.getTotalIncome();
+            }
+        }
+        return total;
+    }
 
-    //mostSuccessfullBand()
+    public Band mostSuccessfullBand() {
+        Band topBand = null;
+        double maxIncome = 0.0;
+
+        for(Band band : bands) {
+            double actuallyTotalIncome = band.getTotalIncome();
+            if(actuallyTotalIncome > maxIncome) {
+                maxIncome = actuallyTotalIncome;
+                topBand = band;
+            }
+        }
+        return topBand;
+    }
 }

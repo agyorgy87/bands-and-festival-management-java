@@ -5,4 +5,6 @@ public interface Band {
      String getName();
      List<String> getAlbums();
      double getTotalIncome();
+
+     void setTotalIncome(double totalIncome);//!
 }
