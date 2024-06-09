@@ -11,14 +11,12 @@ public class FinnBand implements Band {
 
     private double alcoholConsumedOnAccount;
 
-    private double ticketPrice;
 
     public FinnBand(String name) {
         this.name = name;
         this.albums = new ArrayList<>();
         this.totalIncome = 0.0;
         this.alcoholConsumedOnAccount = 0.0;
-        this.ticketPrice = 200;
     }
 
     public String getName() {
@@ -44,9 +42,6 @@ public class FinnBand implements Band {
     public void setAlcoholConsumedOnAccount(double alcoholConsumedOnAccount) {
         this.alcoholConsumedOnAccount = alcoholConsumedOnAccount;
     }
-
-    public double getTicketPrice() { return ticketPrice; }
-
 
 
     public void albumRelease(String albumName) {

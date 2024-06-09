@@ -7,14 +7,12 @@ public class MexicanBand implements Band {
     private List<String> albums;
     private double totalIncome;
     private boolean diedInGangWar;
-    private double ticketPrice;
 
     public MexicanBand(String name) {//deleted
         this.name = name;
         this.albums = new ArrayList<>();
         this.totalIncome = 0.0;
         this.diedInGangWar = false;
-        this.ticketPrice = 100;
     }
 
     public String getName() {
@@ -40,8 +38,6 @@ public class MexicanBand implements Band {
     public void setDiedInGangWar(boolean diedInGangWar) {
         this.diedInGangWar = diedInGangWar;
     }
-
-    public double getTicketPrice() { return ticketPrice; }
 
     public void albumRelease(String albumName) {
         albums.add(albumName);

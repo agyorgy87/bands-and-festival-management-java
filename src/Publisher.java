@@ -54,7 +54,6 @@ public class Publisher {
     public Band mostSuccessfullBand() {
         Band topBand = null;
         double maxIncome = 0.0;
-
         for(Band band : bands) {
             double actuallyTotalIncome = band.getTotalIncome();
             if(actuallyTotalIncome > maxIncome) {
