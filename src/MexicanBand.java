@@ -8,7 +8,7 @@ public class MexicanBand implements Band {
     private double totalIncome;
     private boolean diedInGangWar;
 
-    public MexicanBand(String name) {//deleted
+    public MexicanBand(String name) {
         this.name = name;
         this.albums = new ArrayList<>();
         this.totalIncome = 0.0;
@@ -67,5 +67,10 @@ public class MexicanBand implements Band {
             e.printStackTrace();
         }
         return bands;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

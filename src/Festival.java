@@ -13,9 +13,9 @@ public class Festival {
     private int bronzeTicketSold;
     private int silverTicketSold;
     private int goldTicketSold;
-    private double bronzeTicketPrice = 100.0;
-    private double silverTicketPrice = 200.0;
-    private double goldTicketPrice = 300.0;
+    private double bronzeTicketPrice;
+    private double silverTicketPrice;
+    private double goldTicketPrice;
 
 
     public Festival(String festivalName) {
@@ -27,6 +27,9 @@ public class Festival {
         this.bronzeTicketSold = 0;
         this.silverTicketSold = 0;
         this.goldTicketSold = 0;
+        this.bronzeTicketPrice = 100.0;
+        this.silverTicketPrice = 200.0;
+        this.goldTicketPrice = 300.0;
     }
 
     public String getFestivalName() {
@@ -123,9 +126,38 @@ public class Festival {
         numberOfSoldTickets += quantity;
     }
 
-    public void countMaxIncome() {
+    public double countMaxIncome() {
         maxIncome = (bronzeTicketPrice * bronzeTicketSold) +
-                    (silverTicketPrice + silverTicketSold) +
-                    (goldTicketPrice + goldTicketSold);
+                    (silverTicketPrice * silverTicketSold) +
+                    (goldTicketPrice * goldTicketSold);
+        return maxIncome;
+    }
+
+    public double ticketSoldByPrice(String ticketType) {
+        switch(ticketType.toLowerCase()) {
+            case "bronze":
+                return bronzeTicketPrice *= bronzeTicketSold;
+            case "silver":
+                return silverTicketPrice *= silverTicketSold;
+            case "gold":
+                return goldTicketPrice *= goldTicketSold;
+            default:
+                return 0.0;
+        }
+    }
+
+    //
+
+    public Band getTopEarningBand() {
+        if(performersList.isEmpty()) {
+            return null;
+        }
+        Band topEarningBand = performersList.get(0);
+        for(Band band : performersList) {
+            if(band.getTotalIncome() > topEarningBand.getTotalIncome()) {
+                topEarningBand = band;
+            }
+        }
+        return topEarningBand;
     }
 }

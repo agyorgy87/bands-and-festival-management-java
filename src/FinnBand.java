@@ -43,9 +43,13 @@ public class FinnBand implements Band {
         this.alcoholConsumedOnAccount = alcoholConsumedOnAccount;
     }
 
-
     public void albumRelease(String albumName) {
         albums.add(albumName);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
 }
