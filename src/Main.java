@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.*;
+
 public class Main {
+
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
 
         Festival festival = new Festival("Summer Fest");
@@ -50,6 +54,13 @@ public class Main {
         bomfunkMc.setTotalIncome(7500.0);
         him.setTotalIncome(15000.0);
 
-        System.out.println("Top Band: " + festival.getTopEarningBand());
+        //System.out.println("Top Band: " + festival.getTopEarningBand());
+
+        try{
+            Band topBand = festival.getTopEarningBand();
+            LOGGER.info("Number one band: " + topBand);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

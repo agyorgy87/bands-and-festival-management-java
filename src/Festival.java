@@ -146,11 +146,9 @@ public class Festival {
         }
     }
 
-    //
-
-    public Band getTopEarningBand() {
+    public Band getTopEarningBand() throws EmptyListException{
         if(performersList.isEmpty()) {
-            return null;
+            throw new EmptyListException("The Performers list is empty.");
         }
         Band topEarningBand = performersList.get(0);
         for(Band band : performersList) {
