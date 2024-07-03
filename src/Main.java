@@ -24,11 +24,10 @@ public class Main {
         festival.addBand(him);
 
         Publisher novaRecord = new Publisher("Nova Record");
-/*
         novaRecord.pickupBand(him);
         novaRecord.pickupBand(bomfunkMc);
         novaRecord.pickupBand(losLobos);
-*/
+
         festival.deleteBandFromFestival("Los Cogelones");
 
         List<Band> sortedBands = festival.getNamesOfArtistsByOrder();
@@ -55,15 +54,6 @@ public class Main {
         double himAlcoholConsumedOnAccount = him.getAlcoholConsumedOnAccount();
         System.out.println("HIM members alcohol account: " + himAlcoholConsumedOnAccount);
 
-        him.setTotalIncome(1000.0);
-        losLobos.setTotalIncome(700.0);
-        bomfunkMc.setTotalIncome(900.0);
-
-        //him.setAlcoholConsumedOnAccount(500.0);
-
-        System.out.println("full income: ");
-        double fullI = novaRecord.fullIncome();
-        System.out.println(fullI);
 
         try{
             Band topBand = festival.getTopEarningBand();
@@ -72,7 +62,18 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("most successfull: ");
+        him.setTotalIncome(1000.0);
+        losLobos.setTotalIncome(700.0);
+        bomfunkMc.setTotalIncome(900.0);
+
+        try{
+            double fullI = novaRecord.fullIncome();
+            LOGGER.info("full income: " + fullI);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
         try{
             Band mostSuccessfull = novaRecord.mostSuccessfullBand();
             LOGGER.info("most successfull: " + mostSuccessfull);
@@ -80,6 +81,11 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        /*
+        novaRecord.deleteBandByName("bomfunkMc");
+        Band novaRecordBands = novaRecord.getBands();
+        System.out.println();
+        */
 
         List<Band> bands = MexicanBand.parseAll("bandsFile.txt");
         System.out.println(bands);

@@ -39,8 +39,11 @@ public class Publisher {
         return false;
     }
 
-    public double fullIncome() {
+    public double fullIncome() throws InvalidDoubleException{
         double total = 0.0;
+        if(total <= 0.0) {
+            throw new InvalidDoubleException("The value is not positive double");
+        }
         for(Band band : bands) {
             if( band instanceof FinnBand) {
                total += band.getTotalIncome() - ((FinnBand) band).getAlcoholConsumedOnAccount();//ClassCastException
