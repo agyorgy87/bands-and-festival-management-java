@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.*;
 
@@ -24,6 +23,12 @@ public class Main {
         festival.addBand(bomfunkMc);
         festival.addBand(him);
 
+        Publisher novaRecord = new Publisher("Nova Record");
+/*
+        novaRecord.pickupBand(him);
+        novaRecord.pickupBand(bomfunkMc);
+        novaRecord.pickupBand(losLobos);
+*/
         festival.deleteBandFromFestival("Los Cogelones");
 
         List<Band> sortedBands = festival.getNamesOfArtistsByOrder();
@@ -50,11 +55,15 @@ public class Main {
         double himAlcoholConsumedOnAccount = him.getAlcoholConsumedOnAccount();
         System.out.println("HIM members alcohol account: " + himAlcoholConsumedOnAccount);
 
-        losLobos.setTotalIncome(4000.0);
-        bomfunkMc.setTotalIncome(7500.0);
-        him.setTotalIncome(15000.0);
+        him.setTotalIncome(1000.0);
+        losLobos.setTotalIncome(700.0);
+        bomfunkMc.setTotalIncome(900.0);
 
-        //System.out.println("Top Band: " + festival.getTopEarningBand());
+        //him.setAlcoholConsumedOnAccount(500.0);
+
+        System.out.println("full income: ");
+        double fullI = novaRecord.fullIncome();
+        System.out.println(fullI);
 
         try{
             Band topBand = festival.getTopEarningBand();
@@ -62,5 +71,17 @@ public class Main {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.println("most successfull: ");
+        try{
+            Band mostSuccessfull = novaRecord.mostSuccessfullBand();
+            LOGGER.info("most successfull: " + mostSuccessfull);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        List<Band> bands = MexicanBand.parseAll("bandsFile.txt");
+        System.out.println(bands);
     }
 }

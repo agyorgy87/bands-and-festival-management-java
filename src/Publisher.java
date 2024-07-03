@@ -43,7 +43,7 @@ public class Publisher {
         double total = 0.0;
         for(Band band : bands) {
             if( band instanceof FinnBand) {
-               total += band.getTotalIncome() + ((FinnBand) band).getAlcoholConsumedOnAccount();//ClassCastException
+               total += band.getTotalIncome() - ((FinnBand) band).getAlcoholConsumedOnAccount();//ClassCastException
             }else{
                 total += band.getTotalIncome();
             }
@@ -51,9 +51,12 @@ public class Publisher {
         return total;
     }
 
-    public Band mostSuccessfullBand() {
-        Band topBand = null;
-        double maxIncome = 0.0;
+    public Band mostSuccessfullBand() throws EmptyListException {
+        if(bands.isEmpty()) {
+            throw new EmptyListException("The bands list is empty.");
+        }
+        Band topBand = bands.get(0);
+        double maxIncome = bands.get(0).getTotalIncome();
         for(Band band : bands) {
             double actuallyTotalIncome = band.getTotalIncome();
             if(actuallyTotalIncome > maxIncome) {

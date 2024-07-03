@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MexicanBand implements Band {
 
@@ -45,8 +48,8 @@ public class MexicanBand implements Band {
 
     public static List<Band> parseAll(String filename) {
         List<Band> bands = new ArrayList<>();
-
-        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filename))) {
+        // try with resource
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
@@ -63,7 +66,7 @@ public class MexicanBand implements Band {
                     bands.add(band);
                 }
             }
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return bands;
